@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restricted Area – Hogwarts</title>
+
+<style>
+body {
+    margin: 0;
+    background: #1f1409;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #3b2a1a;
+}
+
+/* LOGIN */
+#login {
+    background: #f3e2c7;
+    padding: 5vh 6vw;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+input {
+    padding: 1.5vh;
+    font-size: 18px;
+    width: 80%;
+    margin-top: 2vh;
+    border-radius: 8px;
+    border: 1px solid #999;
+}
+
+button {
+    margin-top: 3vh;
+    background: #6b2e2e;
+    color: white;
+    border: none;
+    padding: 1.5vh 3vw;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* MAIN CONTENT */
+#content {
+    display: none;
+    background: #f3e2c7;
+    padding: 5vh 6vw;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+h1 { font-size: 40px; }
+h2 { font-weight: normal; margin-bottom: 4vh; }
+
+#seal {
+    width: 120px;
+    margin-top: 4vh;
+    cursor: pointer;
+    transition: transform 1s, opacity 1s;
+}
+
+#letter {
+    display: none;
+    opacity: 0;
+    transition: opacity 2s;
+    margin-top: 4vh;
+}
+
+#letter img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+p { font-size: 18px; line-height: 1.6; }
+
+</style>
+</head>
+
+<body>
+
+<div id="login">
+    <h1>Restricted Area</h1>
+    <p>Only those chosen by magic may proceed.</p>
+    <input type="password" id="password" placeholder="Enter the secret word">
+    <br>
+    <button onclick="checkPassword()">Enter</button>
+</div>
+
+<div id="content">
+    <h1>Hogwarts</h1>
+    <h2>School of Witchcraft and Wizardry</h2>
+
+    <p>
+    Hogwarts School of Witchcraft and Wizardry is a prestigious magical institution 
+    hidden deep within the Scottish Highlands. For centuries, it has trained young 
+    witches and wizards in the art of magic, teaching them to master spells, potions, 
+    and magical creatures. Students are sorted into four unique houses, each fostering 
+    friendship, courage, wisdom, and ambition. The castle is alive with enchantments, 
+    hidden passages, and secret treasures, offering an adventure unlike any other. 
+    Admission is granted only to those with true magical potential.
+    </p>
+
+    <img id="seal" src="seal.png" alt="Wax Seal" onclick="openLetter()">
+
+    <div id="letter">
+        <img src="lettera.jpeg" alt="Hogwarts Letter">
+    </div>
+</div>
+
+<script>
+// 🔐 Cambia qui la password se vuoi
+const SECRET_PASSWORD = "05092025";
+
+function checkPassword() {
+    const input = document.getElementById("password").value;
+    if (input === SECRET_PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    } else {
+        alert("Access denied by magic.");
+    }
+}
+
+function openLetter() {
+    const seal = document.getElementById("seal");
+    const letter = document.getElementById
